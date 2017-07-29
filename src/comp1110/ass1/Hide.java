@@ -210,6 +210,10 @@ public class Hide {
      * describing a placement of the masks as a four-character sequence, according to the way
      * mask placements are encoded.
      *
+     * Masks Y and Z should not appear in rotations C and D in any valid solution (since these
+     * are isomorphic with rotations A and B respectively, as explained in the documentation
+     * of the Mask class).  Invalid solutions should not be returned by this method.
+     *
      * @return An array of strings representing the set of all solutions to this game.  If
      * there are no solutions, the array should be empty (not null).
      */

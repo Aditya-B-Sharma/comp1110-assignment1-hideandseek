@@ -20,6 +20,15 @@ public enum Mask {
      * Return indicies corresponding to which board squares would be covered
      * by this mask given the provided placement.
      *
+     * A placement encodes which of the four quadrants a mask is located in,
+     * and rotations of the masks.  Masks may only be rotated, not be flipped
+     * (the game does not allow them to be turned over).
+     *
+     * Masks W and X have four interesting rotations.   Masks Y and Z only have two
+     * interesting rotations, the other two are isomorphic:  Mask Y and Z in rotation
+     * A are indistinguishable from masks Y and Z in rotation C. Likewise Mask Y and Z
+     * in rotation B are indistinguishable from masks Y and Z in rotation D.
+     *
      * The placement character describes the place as follows:
      *    - letters 'A' to 'D' describe the first quadrant of the board,
      *      corresponding to board positions 0-8.
