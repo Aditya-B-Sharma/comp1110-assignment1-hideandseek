@@ -109,6 +109,10 @@ public class Hide {
      * first arrays for difficulty values less than 2.5/10, the next for values
      * less than 5.0/10, etc.
      *
+     * Note that difficulty is a double in the range 0.0 and 10.0.  It may take on any
+     * value in the range 0.0 to 10.0.   Your task is to map those values to the
+     * twelve SAMPLE_OBJECTIVES provided.
+     *
      * The code should choose within the arrays randomly, so for a given difficulty
      * level, any one of the three sample values might be used.
      *
@@ -137,6 +141,14 @@ public class Hide {
      *
      *   - It should provide a rich number of objectives (much more than SAMPLE_OBJECTIVES),
      *     so that the player is not likely to be given the same objective repeatedly.
+     *
+     *   - It should offer a more graduated notion of difficulty levels, more than just the
+     *     four levels provided by SAMPLE_OBJECTIVES.   The tests expect to see difficulty
+     *     resolved to at least eight levels.
+     *
+     *
+     * Note that difficulty is given as a double in the range 0.0 and 10.0.  It may take
+     * on any value in the range 0.0 to 10.0.
      *
      * This requires a deeper understanding of the problem, and some way of determining
      * what makes a particular objective difficult or easy.
