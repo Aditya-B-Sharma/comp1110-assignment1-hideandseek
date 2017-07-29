@@ -177,8 +177,8 @@ public class Hide {
      *
      * Examples:
      *
-     *   in:  "A B  F  A C "    out: "AABCF"
-     *   in:  "    CGC CA F"    out: "ACCCFG"
+     *   in:  "A.B..F..A.C."    out: "AABCF"
+     *   in:  "....CGC.CA.F"    out: "ACCCFG"
      *
      * Hint: You may want to convert from String to array of char using toCharArray(), and then
      * do your work using the char array before converting back by creating a new String with
