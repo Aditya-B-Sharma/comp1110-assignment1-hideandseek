@@ -593,7 +593,7 @@ public class Game extends Application {
             makeExposed();
         } catch (IllegalArgumentException e) {
             System.err.println("Uh oh. "+ e);
-            Thread.dumpStack();
+            e.printStackTrace();
             Platform.exit();
         }
         resetPieces();
