@@ -107,7 +107,8 @@ public class Hide {
      *
      * The code should index into the samples according to the difficulty, using the
      * first arrays for difficulty values less than 2.5/10, the next for values
-     * less than 5.0/10, etc.
+     * less than 5.0/10, the next for values less than 7.5/10, and the last for
+     * the remaining values.
      *
      * Note that difficulty is a double in the range 0.0 and 10.0.  It may take on any
      * value in the range 0.0 to 10.0.   Your task is to map those values to the
