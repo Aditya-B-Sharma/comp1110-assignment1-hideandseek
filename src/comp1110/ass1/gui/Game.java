@@ -293,8 +293,8 @@ public class Game extends Application {
          * @return true if the mask is on the board
          */
         private boolean onBoard() {
-            return getLayoutX() > BOARD_X && (getLayoutX() < (GAME_WIDTH - BOARD_X))
-                    && getLayoutY() > BOARD_Y && (getLayoutY() < (GAME_HEIGHT - BOARD_Y));
+            return getLayoutX() > (BOARD_X-LARGE_SQUARE_SIZE) && (getLayoutX() < (GAME_WIDTH - BOARD_X))
+                    && getLayoutY() > (BOARD_Y-LARGE_SQUARE_SIZE) && (getLayoutY() < (GAME_HEIGHT - BOARD_Y));
         }
 
 
