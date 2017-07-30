@@ -53,6 +53,9 @@ public enum Mask {
      * so you could use that to somehow encode the properties of each of the four masks.
      * Then in this method you could use the value to calculate the required indicies.
      *
+     * See the 'Grade' enum given in the O2 lecture as part of the lecture code (live coding),
+     * for an example of an enum with associated state and constructions.
+     *
      * The tutorial here: http://docs.oracle.com/javase/tutorial/java/javaOO/enum.html
      * has an example of a Planet enum, which includes two doubles in each planet's
      * constructor representing the mass and radius.   Those values are used in the
