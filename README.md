@@ -54,8 +54,8 @@ The assignment is based on a simple children's puzzle called [Pirates Jr - Hide 
 
 The game is played on a board consisting of a 6x6 grid, comprised of four 3x3 quadrants.
 Many, but not all, squares in the grid hold *shapes* (animals, actually).  There
-are exactly *eight* kinds of animals, each of which appear on the board either 
-exactly twice our four times.   The location of the shapes on the board is 
+are exactly *eight* kinds of animals, each of which appear on the board 
+either two, three our four times.   The location of the shapes on the board is 
 fixed (they are in exactly the sample place for every game).
 
 The game comes with four differently shaped *masks*, each of which fits over
