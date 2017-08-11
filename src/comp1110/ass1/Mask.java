@@ -1,6 +1,10 @@
 package comp1110.ass1;
 
+import com.sun.tools.javac.util.ArrayUtils;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.IntStream;
 
 /**
  * An enumeration representing the four masks in the game hide.
@@ -163,8 +167,10 @@ public enum Mask {
      */
 
     int[] getIndices(char placement) {
-
         int[] indices = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
+        if (placement == ' ') {
+            return indices;
+        }
         int transposeAmount = 0;
 
         // Default quadrant variable if input is 'A' to 'D'.
@@ -249,10 +255,63 @@ public enum Mask {
      * @return The result of masking the input with the given mask, with masked characters replaced
      * by Hide.EMPTY_CHAR ('.').
      */
+    static String checker(int[] input, int a, int b) {
+        String output = "";
+        int counter = 0;
+        Integer[] checkList = new Integer[]{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35};
+        for (int i = 0; i < input.length; i ++) {
+            if (input[i%9] == counter) {
+                output += Hide.EMPTY_CHAR;
+                counter ++;
+            } else if (input[i%9] != counter) {
+                output += "X";
+                if (counter + 1 == input[i%9]) {
+                    output += Hide.EMPTY_CHAR;
+                    counter ++;
+                }
+            }
+        }return output;
+    }
+
     public static String maskString(String maskPositions, String input) {
+
+        if (maskPositions.trim().length() == 0) {
+            return input;
+        }
+        String w = "";
+        String x = "";
+        String y = "";
+        String z = "";
+
+        char valOne = maskPositions.charAt(0);
+        char valTwo = maskPositions.charAt(1);
+        char valThree = maskPositions.charAt(2);
+        char valFour = maskPositions.charAt(3);
+
+        if (valOne != ' ') {
+            w = checker(Mask.W.getIndices(valOne), Mask.W.first, Mask.W.second);
+            System.out.println(w);
+        }
+        if (valTwo != ' ') {
+            x = checker(Mask.X.getIndices(valTwo), Mask.X.first, Mask.X.second);
+            System.out.println(x);
+        }
+        if (valThree != ' ') {
+            y = checker(Mask.Y.getIndices(valThree), Mask.Y.first, Mask.Y.second);
+            System.out.println(y);
+        }
+        if (valFour != ' ') {
+            z = checker(Mask.Z.getIndices(valFour), Mask.Z.first, Mask.Z.second);
+            System.out.println(z);
+        }
+
+        //int[] firstSet = getIndices(valOne);
+
+
         System.out.println(maskPositions);
         System.out.println(input);
         // FIXME Task 5: implement code that correctly creates a masked string according to the comment above
-        return null;
+        System.out.println(new String(w+x+y+z));
+        return new String(w+x+y+z);
     }
 }
