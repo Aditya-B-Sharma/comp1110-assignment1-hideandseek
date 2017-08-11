@@ -1,9 +1,6 @@
 package comp1110.ass1;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-//import java.util.Collections;
 
 /**
  * An enumeration representing the four masks in the game hide.
@@ -23,6 +20,12 @@ public enum Mask {
     X(1, 4),
     Y(0, 8),
     Z(1, 7);
+
+    /*
+    first is the 1st unmasked index and
+    second is the 2nd unmasked index, defined in the construction for each mask.
+    i.e indices no. (2, 7) for mask W.
+     */
 
     private int first;
     private int second;
@@ -81,6 +84,16 @@ public enum Mask {
      * @param placement A character describing the placement of this mask, as per the above encoding
      * @return A set of indices corresponding to the board positions that would be covered by this mask
      */
+
+    /*
+    transposer function:
+    Used to rotate the mask, each call on this function will rotate the mask 90 degrees,
+    so we call it twice to rotate 180 or 3 times for 270.
+
+    This only rotates the block by indices and doesn't change values, meaning we can find our masks'
+    .first and .second values later and choose not to return their indices for the final getIndices() function.
+     */
+
     int[] transposer(int[] list) {
         int[] out = new int[list.length];
         out[0] = (list[6]);
@@ -94,53 +107,83 @@ public enum Mask {
         out[8] = (list[2]);
         return out;
     }
-    int[] quadrant(int[] list, int quadNumber) {
-        int x = 9 * (quadNumber);
-        int[] finalQuadrant = list;
-        for (int j = 0; j < finalQuadrant.length; j++)
-        {
-            finalQuadrant[j] = finalQuadrant[j] + x;
-        }
-        return finalQuadrant;
-    }
+
+
+    /*
+    spotDeleter function:
+    This function will be given the arbitrary masks' .first and .second values as integers
+    and will take away the index values in the [0..8] array respective to where our unmasked spaces are,
+    and return the resulting list of indices which are masked.
+    */
+
     int[] spotDeleter(int[] input, int a, int b ) {
         ArrayList<Integer> actualOut = new ArrayList<Integer>();
-        for (int i = 0; i < input.length; i++)
-        {
-            if (input[i] == a || input[i] == b)
-            {
+        for (int i = 0; i < input.length; i++) {
+
+            if (input[i] == a || input[i] == b) {
                 continue;
             }
-            else
-            {
+
+            else {
                 actualOut.add(i);
             }
         }
+
+        // Return the primitive int list output.
+
         int[] output = new int[actualOut.size()];
-        for(int j = 0; j < actualOut.size(); j++)
-        {
+        for(int j = 0; j < actualOut.size(); j++) {
             output[j] = actualOut.get(j);
         }
         return output;
     }
 
 
+    /*
+    quadrant function:
+    Changes mask quadrant by adding 9 * quadrant variable defined from placement letter,
+    to each element in the list.
+    */
+
+    int[] quadrant(int[] list, int quadNumber) {
+        int x = 9 * (quadNumber);
+        int[] finalQuadrant = list;
+
+        for (int j = 0; j < finalQuadrant.length; j++)
+        {
+            finalQuadrant[j] = finalQuadrant[j] + x;
+        }
+        return finalQuadrant;
+    }
+
+    /*
+    getIndices function:
+    Will declare quadrant position and rotation amount based off placement value,
+    and will do the respective rotations and translations and return the final masks' position int list.
+     */
+
     int[] getIndices(char placement) {
+
         int[] indices = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
         int transposeAmount = 0;
+
+        // Default quadrant variable if input is 'A' to 'D'.
+
         int quadrantType = 0;
-        if (placement >= 'E' && placement <= 'H')
-        {
+
+        if (placement >= 'E' && placement <= 'H') {
             quadrantType = 1;
         }
-        else if (placement >= 'I' && placement <= 'L')
-        {
+        else if (placement >= 'I' && placement <= 'L') {
             quadrantType = 2;
         }
-        else if (placement >= 'M' && placement <= 'P')
-        {
+        else if (placement >= 'M' && placement <= 'P') {
             quadrantType = 3;
         }
+
+        // Rotation depending on placement.
+        // Default for this is 0 (no rotations) since 'A', 'E', 'I', 'M' require no rotation.
+
         switch (placement) {
             case 'B':
             case 'F':
@@ -167,11 +210,21 @@ public enum Mask {
                 break;
             }
         }
+
+        // Delete indices where masks .first and .second index unmasked variables match.
+
         indices = spotDeleter(indices, first, second);
+
+        // Set quadrant.
+
         indices = quadrant(indices, quadrantType);
+
+        // Return resulting list.
+
         return indices;
-        // FIXME Task 4: implement code that correctly creates an array of integers specifying the indicies of masked pieces
     }
+
+    //Task 4 complete.
 
     /**
      * Mask an input string with a given string of mask positions.   The

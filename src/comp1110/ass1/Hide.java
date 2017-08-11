@@ -127,21 +127,30 @@ public class Hide {
      * @param difficulty A value between 0.0 (easiest) and 10.0 (hardest) specifying the desired level of difficulty.
      */
     public static Objective establishSimpleObjective(double difficulty) {
+
+        // Define random index, either 0, 1, or 2, then use it to access the required list within samples.
+        // This will return a singular Objective type.
+
         Random num = new Random();
         int index = num.nextInt(3);
-        Objective[] out;
+
         if (difficulty < 2.5) {
-            out = SAMPLE_OBJECTIVES[0];
-        } else if (difficulty < 5.0) {
-            out = SAMPLE_OBJECTIVES[1];
-        } else if (difficulty < 7.5) {
-            out = SAMPLE_OBJECTIVES[2];
-        } else {
-            out = SAMPLE_OBJECTIVES[3];
+            return SAMPLE_OBJECTIVES[0][index];
         }
-        return out[index];
-        // FIXME Task 3:  Replace the code below with code that draws from SAMPLE_OBJECTIVES
+
+        else if (difficulty < 5.0) {
+            return SAMPLE_OBJECTIVES[1][index];
+        }
+
+        else if (difficulty < 7.5) {
+            return SAMPLE_OBJECTIVES[2][index];
+        }
+
+        else {
+            return SAMPLE_OBJECTIVES[3][index];
+        }
     }
+    // Task 3 Complete.
 
 
     /**
@@ -220,10 +229,9 @@ public class Hide {
         }
         char[] inchar = (in.replace(".", "")).toCharArray();
         Arrays.sort(inchar);
-        String out = new String(inchar);
-        return out;
-        // FIXME Task 2: implement code that correctly returns a canonical string according to the comment above.
+        return new String(inchar);
     }
+    // Task 2 Complete.
 
 
     /**
