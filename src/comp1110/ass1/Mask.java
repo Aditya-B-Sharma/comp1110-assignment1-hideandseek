@@ -22,7 +22,7 @@ public enum Mask {
     W(2, 7),
     X(1, 4),
     Y(0, 8),
-    Z(1, 7);          // These do not use any state (or constructors).  You may want to add them.
+    Z(1, 7);
 
     private int first;
     private int second;
@@ -31,44 +31,6 @@ public enum Mask {
     Mask(int first, int second) {
         this.first = first;
         this.second = second;
-    }
-
-    int[] transposer(int[] list) {
-        int[] out = new int[list.length];
-        out[0] = (list[6]);
-        out[1] = (list[3]);
-        out[2] = (list[0]);
-        out[3] = (list[7]);
-        out[4] = (list[4]);
-        out[5] = (list[1]);
-        out[6] = (list[8]);
-        out[7] = (list[5]);
-        out[8] = (list[2]);
-        return out;
-    }
-    int[] quadrant(int[] list, int quadNumber) {
-        int x = 9 * (quadNumber);
-        int[] finalQuadrant = list;
-        for (int j = 0; j < finalQuadrant.length; j++) {
-            finalQuadrant[j] = finalQuadrant[j] + x;
-        }
-        return finalQuadrant;
-    }
-    int[] spotDeleter(int[] input, int a, int b ) {
-
-        ArrayList<Integer> actualOut = new ArrayList<Integer>();
-        for (int i = 0; i < input.length; i++) { //i is index counter
-            if (input[i] == a || input[i] == b) {
-                continue;
-            } else {
-                actualOut.add(i);
-            }
-        }
-        int[] output = new int[actualOut.size()];
-        for(int j = 0; j < actualOut.size(); j++) {
-                output[j] = actualOut.get(j);
-        }
-        return output;
     }
 
     /**
@@ -119,18 +81,64 @@ public enum Mask {
      * @param placement A character describing the placement of this mask, as per the above encoding
      * @return A set of indices corresponding to the board positions that would be covered by this mask
      */
+    int[] transposer(int[] list) {
+        int[] out = new int[list.length];
+        out[0] = (list[6]);
+        out[1] = (list[3]);
+        out[2] = (list[0]);
+        out[3] = (list[7]);
+        out[4] = (list[4]);
+        out[5] = (list[1]);
+        out[6] = (list[8]);
+        out[7] = (list[5]);
+        out[8] = (list[2]);
+        return out;
+    }
+    int[] quadrant(int[] list, int quadNumber) {
+        int x = 9 * (quadNumber);
+        int[] finalQuadrant = list;
+        for (int j = 0; j < finalQuadrant.length; j++)
+        {
+            finalQuadrant[j] = finalQuadrant[j] + x;
+        }
+        return finalQuadrant;
+    }
+    int[] spotDeleter(int[] input, int a, int b ) {
+        ArrayList<Integer> actualOut = new ArrayList<Integer>();
+        for (int i = 0; i < input.length; i++)
+        {
+            if (input[i] == a || input[i] == b)
+            {
+                continue;
+            }
+            else
+            {
+                actualOut.add(i);
+            }
+        }
+        int[] output = new int[actualOut.size()];
+        for(int j = 0; j < actualOut.size(); j++)
+        {
+            output[j] = actualOut.get(j);
+        }
+        return output;
+    }
+
 
     int[] getIndices(char placement) {
         int[] indices = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
         int transposeAmount = 0;
         int quadrantType = 0;
-        if (placement >= 'A' && placement <= 'D') {
-            quadrantType = 0;
-        } else if (placement >= 'E' && placement <= 'H'){
+        if (placement >= 'E' && placement <= 'H')
+        {
             quadrantType = 1;
-        } else if (placement >= 'I' && placement <= 'L'){
+        }
+        else if (placement >= 'I' && placement <= 'L')
+        {
             quadrantType = 2;
-        } else if (placement >= 'M' && placement <= 'P'){
+        }
+        else if (placement >= 'M' && placement <= 'P')
+        {
             quadrantType = 3;
         }
         switch (placement) {
@@ -189,6 +197,8 @@ public enum Mask {
      * by Hide.EMPTY_CHAR ('.').
      */
     public static String maskString(String maskPositions, String input) {
+        System.out.println(maskPositions);
+        System.out.println(input);
         // FIXME Task 5: implement code that correctly creates a masked string according to the comment above
         return null;
     }
