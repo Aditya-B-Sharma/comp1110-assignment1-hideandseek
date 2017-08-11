@@ -7,8 +7,6 @@ Your assignment **will not** be marked unless you have completed this statement.
 
 I declare that the work I have submitted for assignment one is entirely my own work, with the following documented exceptions:
 
-* The idea of <...> came from a discussion with <...>
+Task 5 attempt help from Chris Ward and Robert Offner. 
 
-* The code in class <...> uses an idea suggested by <...>
-
-Signed: Mary Jones (u2345678)
+Signed: Aditya Sharma (u6051965)
