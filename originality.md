@@ -7,6 +7,6 @@ Your assignment **will not** be marked unless you have completed this statement.
 
 I declare that the work I have submitted for assignment one is entirely my own work, with the following documented exceptions:
 
-Task 5 attempt help from Chris Ward and Robert Offner. 
+Task 5 attempt help from Chris Ward u6053464 and Robert Offner u4849459. They gave me the idea of using a list of range 0 - 36.
 
 Signed: Aditya Sharma (u6051965)
